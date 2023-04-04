@@ -1,9 +1,9 @@
 # Meet_App
 
 # FEATURE 1: FILTER EVENTS BY CITY
-- As a user,
-- I should be able to filter events by city
-- So that I can see the list of events taken place in that city
+As a user,\
+I should be able to filter events by city\
+So that I can see the list of events taken place in that city\
 ## Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
 - Given: user hasn’t searched for any city
 - When: the user opens the app
@@ -17,9 +17,9 @@
 - When: the user selects a city from the list
 - Then: their city should be changed to that city
 # FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
-- As a user,
-- I should be able to show or hide an event’s details
-- So that I can see more/less information about an event
+As a user,\
+I should be able to show or hide an event’s details\
+So that I can see more/less information about an event\
 ## Scenario 1: An event element is collapsed by default
 - Given: an event’s info has been loaded
 - When: a user sees an event
@@ -33,9 +33,9 @@
 - When: a user clicks a collapse button
 - Then: the event’s details will become hidden
 # FEATURE 3: SPECIFY NUMBER OF EVENTS
-- As a user,
-- I should be able to specity number of events I want to veiw
-- So that I can see more or fewer events in the events list at once
+As a user,\
+I should be able to specity number of events I want to veiw\
+So that I can see more or fewer events in the events list at once\
 ## Scenario 1: When user hasn’t specified a number, 32 is the default number
 - Given: a user hasn’t specified a number of events to load
 - When: a user opens the app
@@ -45,9 +45,9 @@
 - When: a runs a search
 - Then: the specified number(10) of events will appear
 # FEATURE 4: USE THE APP WHEN OFFLINE
-- As a user,
-- I should be able to use the app when I am offline
-- So that so that I can see the events I viewed when I last opened the app
+As a user,\
+I should be able to use the app when I am offline\
+So that so that I can see the events I viewed when I last opened the app\
 ## Scenario 1: Show cached data when there’s no internet connection
 - Given: a user has previously opened the app with internet connection
 - When: a user opens the app with no internet connection
@@ -57,9 +57,9 @@
 - When: a user changes the settings (city, time, range) that requires loading new data
 - Then: they will see an error message that it is not possible because they are not connected to the internet.
 # FEATURE 5: DATA VISUALIZATION
-- As a user,
-- I should be able to see charts showing the upcoming events in each city
-- So that I know what events are organized in which city
+As a user,\
+I should be able to see charts showing the upcoming events in each city\
+So that I know what events are organized in which city\
 ## Scenario 1: Show a chart with the number of upcoming events in each city
 - Given: there are listed events for a city
 - When: a user searches for events for that city
