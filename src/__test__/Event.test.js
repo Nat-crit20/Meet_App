@@ -27,7 +27,7 @@ describe("<Event /> component", () => {
 
   test("render hidden details", () => {
     EventWrapper.setState({
-      collapse: true,
+      collapse: false,
     });
     expect(EventWrapper.find(".details")).toHaveLength(1);
   });
@@ -38,7 +38,7 @@ describe("<Event /> component", () => {
     });
     EventWrapper.find(".showDetails").simulate("click");
     expect(EventWrapper.state("collapse")).toBeFalsy();
-    expect(EventWrapper.find(".details")).toHaveLength(0);
+    expect(EventWrapper.find(".details")).toHaveLength(1);
   });
 
   test("changes state to true when button is clicked", () => {
@@ -47,6 +47,6 @@ describe("<Event /> component", () => {
     });
     EventWrapper.find(".showDetails").simulate("click");
     expect(EventWrapper.state("collapse")).toBeTruthy();
-    expect(EventWrapper.find(".details")).toHaveLength(1);
+    expect(EventWrapper.find(".details")).toHaveLength(0);
   });
 });

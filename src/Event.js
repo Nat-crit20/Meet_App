@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Event extends Component {
   state = {
-    collapse: false,
+    collapse: true,
   };
   handleButtonClicked = () => {
     this.setState({
@@ -15,7 +15,7 @@ class Event extends Component {
       <div>
         <h1 className="summary">{event.summary}</h1>
         <p className="startTime">{event.start.dateTime}</p>
-        {this.state.collapse ? (
+        {!this.state.collapse ? (
           <div className="details">
             About Event:
             <p>{event.description}</p>
