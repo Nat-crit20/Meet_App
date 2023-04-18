@@ -17,6 +17,7 @@ const checkToken = async (accessToken) => {
   )
     .then((res) => res.json())
     .catch((error) => error.json());
+
   return result;
 };
 
@@ -35,26 +36,31 @@ const removeQuery = () => {
 };
 
 const getToken = async (code) => {
-  const encodeCode = encodeURIComponent(code);
-  const { access_token } = await fetch(
-    "https://b31hphz2q7.execute-api.eu-central-1.amazonaws.com/dev/api/token" +
-      "/" +
-      encodeCode
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((err) => err);
-  access_token && localStorage.serItem("access_token", access_token);
-  return access_token;
-};
+  try {
+    const encodeCode = encodeURIComponent(code);
 
+    const response = await fetch(
+      "https://b31hphz2q7.execute-api.eu-central-1.amazonaws.com/dev/api/token" +
+        "/" +
+        encodeCode
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const { access_token } = await response.json();
+    access_token && localStorage.setItem("access_token", access_token);
+    return access_token;
+  } catch (error) {
+    error.json();
+  }
+};
 export const getEvents = async () => {
   NProgress.start();
+
   if (window.location.href.startsWith("http://localhost")) {
+    NProgress.done();
     return mockData;
   }
-
   const token = await getAccessToken();
 
   if (token) {
@@ -69,13 +75,14 @@ export const getEvents = async () => {
       localStorage.setItem("lastEvents", JSON.stringify(result.data));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
-    NProgress.don();
+    NProgress.done();
     return result.data.events;
   }
 };
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem("access_token");
+
   const tokenCheck = accessToken && (await checkToken(accessToken));
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem("access_token");
@@ -90,5 +97,4 @@ export const getAccessToken = async () => {
     }
     return code && getToken(code);
   }
-  return accessToken;
 };
