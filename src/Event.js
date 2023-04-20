@@ -11,10 +11,11 @@ class Event extends Component {
   };
   render() {
     const { event } = this.props;
+    const d = new Date(event.start.dateTime);
     return (
       <div>
         <h1 className="summary">{event.summary}</h1>
-        <p className="startTime">{event.start.dateTime}</p>
+        <p className="startTime">{d.toUTCString()}</p>
         {!this.state.collapse ? (
           <div className="details">
             About Event:
