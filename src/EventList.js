@@ -7,13 +7,11 @@ class EventList extends Component {
     return (
       <ul className="EventList">
         {events.map((event, i) => {
-          if (i !== 10) {
-            return (
-              <li key={event.id}>
-                <Event event={event} />
-              </li>
-            );
-          }
+          return (
+            <li key={event.id}>
+              <Event event={event} />
+            </li>
+          );
         })}
       </ul>
     );
