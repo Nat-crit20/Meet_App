@@ -97,4 +97,5 @@ export const getAccessToken = async () => {
     }
     return code && getToken(code);
   }
+  return accessToken;
 };
