@@ -1,6 +1,7 @@
 // * This function takes an events array, then uses map to create a new array with only locations.
 //  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
 // * The Set will remove all duplicates from the array.
+
 import { mockData } from "./mockData";
 import axios from "axios";
 import NProgress from "nprogress";
@@ -54,6 +55,7 @@ const getToken = async (code) => {
     error.json();
   }
 };
+
 export const getEvents = async () => {
   NProgress.start();
 

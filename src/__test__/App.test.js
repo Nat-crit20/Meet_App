@@ -69,4 +69,15 @@ describe("<App /> integration", () => {
     expect(AppWrapper.state("events")).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+  test("get list of events matching the number of events selected by the user", async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const selectedNumber = Math.floor(Math.random() * 15);
+    const event = { target: { value: selectedNumber } };
+    await NumberOfEventsWrapper.instance().handleChange(event);
+    expect(AppWrapper.state("eventCount")).toEqual(selectedNumber);
+    expect(AppWrapper.state("events").length).toBe(selectedNumber);
+    AppWrapper.unmount();
+  });
 });
