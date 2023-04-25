@@ -13,7 +13,7 @@ class Event extends Component {
     const { event } = this.props;
     const d = new Date(event.start.dateTime);
     return (
-      <div>
+      <div className="event">
         <h1 className="summary">{event.summary}</h1>
         <p className="startTime">{d.toUTCString()}</p>
         {!this.state.collapse ? (

@@ -52,11 +52,18 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-leaflet|@react-leaflet|d3-*|axios))"
+    ]
+  },
   "devDependencies": {
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
     "enzyme": "^3.11.0",
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "jest-cucumber": "^3.0.1",
+    "puppeteer": "^18.1.0"
   }
 }
