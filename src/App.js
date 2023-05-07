@@ -5,11 +5,13 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { extractLocations, getEvents } from "./api";
+import { WarningError } from "./Alert";
 class App extends Component {
   state = {
     events: [],
     locations: [],
     eventCount: 32,
+    warningText: "",
   };
 
   updateEvents = (location, eventCount) => {
@@ -48,6 +50,16 @@ class App extends Component {
           events: shownEvents,
           eventCount: eventCount,
         });
+      });
+    }
+
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: "You seem to be offline; events were pulled from cache.",
+      });
+    } else {
+      this.setState({
+        warningText: "",
       });
     }
   };
