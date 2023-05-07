@@ -82,6 +82,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <WarningError text={this.state.warningText} />
         <CitySearch
           updateEvents={this.updateEvents}
           locations={this.state.locations}
