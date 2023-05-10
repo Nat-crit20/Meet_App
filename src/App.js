@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
@@ -65,18 +72,18 @@ class App extends Component {
       });
     }
   };
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      const city = location.split(", ").shift();
+      return { city, number };
+    });
+    return data;
+  };
 
-  // componentDidMount() {
-  //   this.mounted = true;
-  //   getEvents().then((events) => {
-  //     if (this.mounted) {
-  //       this.setState({
-  //         events,
-  //         locations: extractLocations(events),
-  //       });
-  //     }
-  //   });
-  // }
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem("access_token");
@@ -96,17 +103,39 @@ class App extends Component {
   componentWillUnmount() {
     this.mounted = false;
   }
+
   render() {
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App" />;
     return (
       <div className="App">
+        <h1>Meet App</h1>
+        <h4>Choose your nearest city</h4>
         <WarningError text={this.state.warningText} />
         <CitySearch
           updateEvents={this.updateEvents}
           locations={this.state.locations}
         />
         <NumberOfEvents updateEvents={this.updateEvents} />
+        <h4>Events in each city</h4>
+        <ScatterChart
+          width={800}
+          height={400}
+          margin={{
+            top: 20,
+            right: 20,
+            bottom: 10,
+            left: 10,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="city" type="category" name="city" />
+          <YAxis dataKey="number" type="number" name="number of events" />
+
+          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+
+          <Scatter data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
         <EventList events={this.state.events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
