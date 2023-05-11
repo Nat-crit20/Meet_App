@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import "./App.css";
 import {
   ScatterChart,
@@ -111,41 +114,54 @@ class App extends Component {
       return <div className="App" />;
     return (
       <div className="App">
-        <h1>Meet App</h1>
-        <h4>Choose your nearest city</h4>
-        <WarningError text={this.state.warningText} />
-        <CitySearch
-          updateEvents={this.updateEvents}
-          locations={this.state.locations}
-        />
-        <NumberOfEvents updateEvents={this.updateEvents} />
-        <h4>Events in each city</h4>
-        <EventGenre events={this.state.events} />
-        <ResponsiveContainer height={400}>
-          <ScatterChart
-            margin={{
-              top: 20,
-              right: 20,
-              bottom: 10,
-              left: 10,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="city" type="category" name="city" />
-            <YAxis
-              allowDecimals={false}
-              dataKey="number"
-              type="number"
-              name="number of events"
+        <Row className="justify-content-center py-5">
+          <Col md={9} className="mb-5 d-flex flex-column align-items-center">
+            <h1>Meet App</h1>
+            <h4>Choose your nearest city</h4>
+            <WarningError text={this.state.warningText} />
+            <CitySearch
+              updateEvents={this.updateEvents}
+              locations={this.state.locations}
             />
+            <NumberOfEvents updateEvents={this.updateEvents} />
+          </Col>
+        </Row>
+        <Row className=" py-5 text-center">
+          <h4>Events in each city</h4>
+          <Col>
+            <EventGenre events={this.state.events} />
+          </Col>
+          <Col>
+            <ResponsiveContainer height={400}>
+              <ScatterChart
+                margin={{
+                  top: 20,
+                  right: 20,
+                  bottom: 10,
+                  left: 10,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="city" type="category" name="city" />
+                <YAxis
+                  allowDecimals={false}
+                  dataKey="number"
+                  type="number"
+                  name="number of events"
+                />
 
-            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+                <Tooltip cursor={{ strokeDasharray: "3 3" }} />
 
-            <Scatter data={this.getData()} fill="#8884d8" />
-          </ScatterChart>
-        </ResponsiveContainer>
-
-        <EventList events={this.state.events} />
+                <Scatter data={this.getData()} fill="#8884d8" />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col xs={10} md={8}>
+            <EventList events={this.state.events} />
+          </Col>
+        </Row>
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
