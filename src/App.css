@@ -140,6 +140,9 @@ input[type="number"] {
 .recharts-surface {
   overflow: visible;
 }
+.charts {
+  display: flex;
+}
 .scatter {
   flex-grow: 1;
   max-width: 1000px;
