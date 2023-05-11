@@ -127,7 +127,7 @@ class App extends Component {
           </Col>
         </Row>
         <h4>Events in each city</h4>
-        <Row className=" py-5 text-center charts">
+        <Row className=" py-5 text-center charts" xs={2} md={4} lg={6}>
           <Col>
             <EventGenre events={this.state.events} />
           </Col>
