@@ -126,8 +126,8 @@ class App extends Component {
             <NumberOfEvents updateEvents={this.updateEvents} />
           </Col>
         </Row>
+        <h4>Events in each city</h4>
         <Row className=" py-5 text-center">
-          <h4>Events in each city</h4>
           <Col>
             <EventGenre events={this.state.events} />
           </Col>
