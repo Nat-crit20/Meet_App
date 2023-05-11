@@ -15,6 +15,7 @@ import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
 import { extractLocations, getEvents, getAccessToken, checkToken } from "./api";
 import { WarningError } from "./Alert";
+import EventGenre from "./EventGenre";
 class App extends Component {
   state = {
     events: [],
@@ -119,6 +120,7 @@ class App extends Component {
         />
         <NumberOfEvents updateEvents={this.updateEvents} />
         <h4>Events in each city</h4>
+        <EventGenre events={this.state.events} />
         <ResponsiveContainer height={400}>
           <ScatterChart
             margin={{
