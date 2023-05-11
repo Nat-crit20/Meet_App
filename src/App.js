@@ -128,34 +128,31 @@ class App extends Component {
         </Row>
         <h4>Events in each city</h4>
         <Row className=" py-5 text-center charts">
-          <Col width={700}>
-            <EventGenre events={this.state.events} />
-          </Col>
-          <Col width={700}>
-            <ResponsiveContainer width={700} height={400} className="scatter">
-              <ScatterChart
-                margin={{
-                  top: 20,
-                  right: 20,
-                  bottom: 10,
-                  left: 10,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="city" type="category" name="city" />
-                <YAxis
-                  allowDecimals={false}
-                  dataKey="number"
-                  type="number"
-                  name="number of events"
-                />
+          <EventGenre events={this.state.events} />
 
-                <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+          <ResponsiveContainer width={700} height={400} className="scatter">
+            <ScatterChart
+              margin={{
+                top: 20,
+                right: 20,
+                bottom: 10,
+                left: 10,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="city" type="category" name="city" />
+              <YAxis
+                allowDecimals={false}
+                dataKey="number"
+                type="number"
+                name="number of events"
+              />
 
-                <Scatter data={this.getData()} fill="#8884d8" />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </Col>
+              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
         </Row>
         <Row className="justify-content-center">
           <Col xs={10} md={8}>
