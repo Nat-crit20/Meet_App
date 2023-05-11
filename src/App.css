@@ -127,7 +127,9 @@ input[type="number"] {
   padding: 20px;
   font-family: sans-serif;
 }
-
+.charts {
+  display: flex;
+}
 .data-vis-wrapper {
   display: flex;
   align-items: center;
