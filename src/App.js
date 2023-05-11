@@ -127,12 +127,12 @@ class App extends Component {
           </Col>
         </Row>
         <h4>Events in each city</h4>
-        <Row className=" py-5 text-center charts" xs={2} md={4} lg={6}>
-          <Col>
+        <Row className=" py-5 text-center charts">
+          <Col width={700}>
             <EventGenre events={this.state.events} />
           </Col>
-          <Col>
-            <ResponsiveContainer height={400} className="scatter">
+          <Col width={700}>
+            <ResponsiveContainer width={700} height={400} className="scatter">
               <ScatterChart
                 margin={{
                   top: 20,
