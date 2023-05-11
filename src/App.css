@@ -140,7 +140,9 @@ input[type="number"] {
 .recharts-surface {
   overflow: visible;
 }
-
+.charts {
+  display: flex;
+}
 .login-button {
   color: #494949;
   text-transform: uppercase;
